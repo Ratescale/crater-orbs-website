@@ -1,0 +1,37 @@
+{
+    "buildCommand": "npm run build",
+    "outputDirectory": "out",
+    "framework": "nextjs",
+    "functions": {
+      "app/api/contact/route.ts": {
+        "maxDuration": 10
+      }
+    },
+    "env": {
+      "SMTP_HOST": "@smtp_host",
+      "SMTP_PORT": "@smtp_port", 
+      "SMTP_USER": "@smtp_user",
+      "SMTP_PASS": "@smtp_pass",
+      "SMTP_FROM": "@smtp_from",
+      "SMTP_TO": "@smtp_to"
+    },
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "X-Frame-Options", 
+            "value": "DENY"
+          },
+          {
+            "key": "X-XSS-Protection",
+            "value": "1; mode=block"
+          }
+        ]
+      }
+    ]
+  }
